@@ -1,17 +1,18 @@
-package shop.data;
+package shop.fileFormatting;
+
+import shop.constantData.Constants;
 
 import java.io.*;
 import java.util.Properties;
 
-public class PropertyFile {
+public class PropertyFileReader {
 
-    private static final String PATH = "src/main/resources/application.properties";
     private static Properties properties = new Properties();
     private static boolean fileWasReading = false;
 
 
     private static void fillProperties() {
-        try (FileInputStream inputStream = new FileInputStream(PATH)) {
+        try (FileInputStream inputStream = new FileInputStream(Constants.PATH_WITH_PROP)) {
             properties.load(inputStream);
             fileWasReading = true;
         } catch (IOException e) {
@@ -21,7 +22,7 @@ public class PropertyFile {
 
     public static String getProperties(String data) {
         if (!fileWasReading) {
-            PropertyFile.fillProperties();
+            PropertyFileReader.fillProperties();
         }
         return properties.getProperty(data);
     }

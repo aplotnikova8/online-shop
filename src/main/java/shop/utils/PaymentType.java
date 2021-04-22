@@ -1,4 +1,4 @@
-package shop.data;
+package shop.constantData;
 
 public enum PaymentType {
 
