@@ -1,6 +1,6 @@
 package shop.utils;
 
-import shop.data.PaymentType;
+import lombok.experimental.UtilityClass;
 
 import java.text.DecimalFormat;
 import java.util.*;
@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
+@UtilityClass
 public class Generator {
 
     private static Random random = new Random();
@@ -15,7 +16,7 @@ public class Generator {
     public static String generateIntNumber(int number) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < number; i++) {
-            sb.append((int) (Math.random() * 10));
+            sb.append(random.nextInt(10));
         }
         return sb.toString();
     }
@@ -29,7 +30,7 @@ public class Generator {
         return random.nextBoolean();
     }
 
-    private static String generateWord() {
+    public static String generateWord() {
         Character[] alp = IntStream.rangeClosed('a', 'z')
                 .mapToObj(var -> (char) var)
                 .toArray(Character[]::new);
@@ -37,8 +38,8 @@ public class Generator {
         StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < 20; i++) {
-            sb.append(alp[random.nextInt(alp.length-1)]);
-            if (i>=2 & alp[random.nextInt(alp.length-1)] % 10 == 0) {
+            sb.append(alp[random.nextInt(alp.length - 1)]);
+            if (i >= 2 && alp[random.nextInt(alp.length - 1)] % 10 == 0) {
                 break;
             }
         }
@@ -54,26 +55,21 @@ public class Generator {
         return sb.toString().trim();
     }
 
-    private static PaymentType generatePaymentType() {
-       return PaymentType.values()[random.nextInt(PaymentType.values().length)];
-    }
-
-
-    public static List<String> addAllPaymentTypeInList() {
+    private static List<String> addAllPaymentTypeInList() {
         List<String> list = Arrays.stream(PaymentType.values())
-                .filter(pt -> !PaymentType.GC.equals(pt))
-                .map(pt -> PaymentType.GC + " and " + pt)
+                .filter(type -> !PaymentType.GC.equals(type))
+                .map(type -> PaymentType.GC + " and " + type)
                 .collect(Collectors.toList());
 
-         Arrays.stream(PaymentType.values()).map(PaymentType::toString)
+        Arrays.stream(PaymentType.values()).map(PaymentType::toString)
                 .forEach(list::add);
 
-         return list;
+        return list;
     }
 
-    public static String choosePaymentType() {
+    public static String generatePaymentType() {
         List<String> list = Generator.addAllPaymentTypeInList();
-        return list.get(random.nextInt(list.size()-1));
+        return list.get(random.nextInt(list.size() - 1));
     }
 
     private static void generateTime(Calendar date) {
@@ -83,7 +79,7 @@ public class Generator {
     }
 
     private static void generateDay(Calendar date) {
-        List<Integer> week = Stream.iterate(date.get(Calendar.DAY_OF_MONTH), n ->  n - 1)
+        List<Integer> week = Stream.iterate(date.get(Calendar.DAY_OF_MONTH), n -> n - 1)
                 .limit(7)
                 .collect(Collectors.toList());
         date.set(Calendar.DAY_OF_MONTH, week.get(random.nextInt(7)));

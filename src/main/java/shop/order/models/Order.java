@@ -1,10 +1,12 @@
-package shop.orderModel;
+package shop.order.models;
 
 import lombok.Builder;
+import lombok.Getter;
 
 import java.util.List;
 
 @Builder
+@Getter
 public class Order {
 
     protected String orderNumber;
@@ -14,13 +16,19 @@ public class Order {
     protected String paymentType;
     protected List<Product> bucket;
 
-    public String converToString() {
-        return orderNumber +
-                "|" + customersName +
-                "|" + loyalty +
-                "|" + date +
-                "|" + productNumber +
-                "|" + price +
-                "|" + paymentType;
+    public String convertToString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Product product : bucket) {
+            stringBuilder.append(orderNumber +
+                    "|" + customersName +
+                    "|" + loyalty +
+                    "|" + date +
+                    "|" + product.productNumber +
+                    "|" + product.price +
+                    "|" + paymentType + "\n");
+
+        }
+        return stringBuilder.toString();
     }
+
 }

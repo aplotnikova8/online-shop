@@ -1,15 +1,19 @@
 package shop;
 
-import shop.orderCreation.builders.OrderBuilder;
-import shop.orderCreation.director.Director;
-import shop.utils.FileCreator;
+import shop.order.generators.OrderGenerator;
+import shop.fileFormatter.FilePreparation;
+import shop.order.models.Order;
+import shop.order.processing.OrderCollector;
+import shop.order.processing.OrderFilter;
+
+import java.util.List;
 
 public class OnlineShop {
 
     public static void main(String[] args) {
-        OrderBuilder builder = OrderBuilder.createOrderBuilder();
-        Director director = Director.createDirector();
-        FileCreator.addOrdersListToFile(director,builder);
+        OrderGenerator orderGenerator = OrderGenerator.create();
+        List<Order> list = OrderCollector.createOrderList(orderGenerator);
+        FilePreparation.addOrdersListToFile(OrderFilter.createFilteringList(list));
     }
 
 }

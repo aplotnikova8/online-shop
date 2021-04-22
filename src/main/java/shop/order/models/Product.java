@@ -1,11 +1,11 @@
-package shop.orderModel;
+package shop.order.models;
 
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Product {
 
-    private String productNumber;
-    private String price;
+    protected String productNumber;
+    protected String price;
 
 }

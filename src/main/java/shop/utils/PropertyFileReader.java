@@ -1,10 +1,14 @@
-package shop.fileFormatting;
+package shop.utils;
 
-import shop.constantData.Constants;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import lombok.extern.java.Log;
 
 import java.io.*;
 import java.util.Properties;
 
+@Log
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PropertyFileReader {
 
     private static Properties properties = new Properties();
@@ -12,11 +16,11 @@ public class PropertyFileReader {
 
 
     private static void fillProperties() {
-        try (FileInputStream inputStream = new FileInputStream(Constants.PATH_WITH_PROP)) {
+        try (FileInputStream inputStream = new FileInputStream(Constants.PATH_TO_PROP)) {
             properties.load(inputStream);
             fileWasReading = true;
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info("Can not read file with path " + Constants.PATH_TO_PROP);
         }
     }
 
@@ -26,6 +30,5 @@ public class PropertyFileReader {
         }
         return properties.getProperty(data);
     }
-
 
 }

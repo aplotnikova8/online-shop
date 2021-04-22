@@ -1,15 +1,17 @@
-package shop.orderModel;
+package shop.order.generators;
 
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import shop.order.models.Product;
+
 import java.util.List;
-import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static shop.constantData.Constants.*;
+import static shop.utils.Constants.*;
 import static shop.utils.Generator.*;
 
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ProductsListGenerator {
 
     public static List<Product> generateProductList(int numberOfProducts) {
@@ -17,4 +19,5 @@ public class ProductsListGenerator {
                 .mapToObj(i -> new Product(generateIntNumber(PRODUCT_NUMBER_SIZE), generateDoubleNumber()))
                 .collect(Collectors.toList());
     }
+
 }
