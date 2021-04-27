@@ -5,7 +5,7 @@ import shop.order.models.Order;
 
 import static shop.order.generators.ProductsListGenerator.*;
 import static shop.utils.Constants.*;
-import static shop.utils.DateFormatter.*;
+import static shop.utils.formatter.DateFormatter.*;
 import static shop.utils.Generator.*;
 
 @RequiredArgsConstructor(staticName = "create")

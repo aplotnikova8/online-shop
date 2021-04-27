@@ -15,5 +15,6 @@ public class Constants {
     public static final String FILE_NAME = "orders.txt";
 
     public static final String NUMBER_OF_ORDERS = "total";
+    public static final String FILE_FORMAT = "format";
 
 }
