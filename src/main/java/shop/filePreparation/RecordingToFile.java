@@ -4,6 +4,7 @@ import lombok.experimental.UtilityClass;
 import lombok.extern.java.Log;
 import shop.order.models.Order;
 import shop.utils.FormatSpecifier;
+import shop.utils.FileFormat;
 import shop.utils.formatter.JsonFormatter;
 
 import java.io.*;
@@ -19,21 +20,18 @@ public class RecordingToFile {
 
     public static void addOrdersListToFile(List<Order> orderList) {
         try (BufferedWriter file = Files.newBufferedWriter(Paths.get(FILE_NAME))) {
-            boolean jsonType = FormatSpecifier.determineOrdersFormat();
+            FileFormat type = FormatSpecifier.determineOrdersFormat();
             for (Order o : orderList) {
-                if (jsonType) {
-                    file.write(JsonFormatter.formatOrderToJson(o));
-                }
-                else {
-                    file.write(o.convertToString());
+                switch (type) {
+                    case JSON:
+                        file.write(JsonFormatter.formatOrderToJson(o));
+                        break;
+                    case TXT:
+                        file.write(o.convertToString());
+                        break;
                 }
             }
-        }
-        catch (IllegalArgumentException e) {
-            log.info("Can not correlate the parameter 'type' from the application.properties " +
-                    "with file format (json/txt)");
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             log.info("File " + FILE_NAME + "does not exist");
         }
     }
