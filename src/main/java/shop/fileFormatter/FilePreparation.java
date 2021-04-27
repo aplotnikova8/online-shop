@@ -5,6 +5,8 @@ import lombok.extern.java.Log;
 import shop.order.models.Order;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 import static shop.utils.Constants.*;
@@ -13,12 +15,8 @@ import static shop.utils.Constants.*;
 @UtilityClass
 public class FilePreparation {
 
-    private static BufferedWriter prepareNewFile() throws IOException {
-        return new BufferedWriter(new FileWriter(FILE_NAME, false));
-    }
-
     public static void addOrdersListToFile(List<Order> orderList) {
-        try (BufferedWriter file = FilePreparation.prepareNewFile()) {
+        try (BufferedWriter file = Files.newBufferedWriter(Paths.get(FILE_NAME))) {
             for (Order o : orderList) {
                 file.write(o.convertToString());
             }

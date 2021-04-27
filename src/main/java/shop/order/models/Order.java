@@ -26,7 +26,6 @@ public class Order {
                     "|" + product.productNumber +
                     "|" + product.price +
                     "|" + paymentType + "\n");
-
         }
         return stringBuilder.toString();
     }

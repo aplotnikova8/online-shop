@@ -3,10 +3,10 @@ package shop.order.processing;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import shop.order.generators.OrderGenerator;
+import shop.order.models.Order;
 import shop.utils.Constants;
 import shop.utils.PropertyFileReader;
-import shop.order.models.Order;
-import shop.order.generators.OrderGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
