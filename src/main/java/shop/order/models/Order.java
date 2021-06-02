@@ -3,11 +3,12 @@ package shop.order.models;
 import lombok.Builder;
 import lombok.Getter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Builder
 @Getter
-public class Order {
+public class Order implements Serializable {
 
     protected String orderNumber;
     protected String customersName;

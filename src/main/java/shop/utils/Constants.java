@@ -17,4 +17,7 @@ public class Constants {
     public static final String NUMBER_OF_ORDERS = "total";
     public static final String FILE_FORMAT = "format";
 
+    public static final String PARTICIPANT_IN_LOYALTY = "true";
+    public static final int COLUMN_WITH_NAME = 1;
+
 }
