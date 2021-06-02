@@ -5,19 +5,20 @@ import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 @Log
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class PropertyFileReader {
 
-    private static Properties properties = new Properties();
+    private static final Properties properties = new Properties();
     private static boolean fileWasReading = false;
 
-
     private static void fillProperties() {
-        try (FileInputStream inputStream = new FileInputStream(Constants.PATH_TO_PROP)) {
-            properties.load(inputStream);
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(Constants.PATH_TO_PROP))) {
+            properties.load(br);
             fileWasReading = true;
         } catch (IOException e) {
             log.info("Can not read file with path " + Constants.PATH_TO_PROP);

@@ -1,6 +1,7 @@
-package shop.utils;
+package shop.utils.formatter;
 
 import lombok.experimental.UtilityClass;
+import shop.utils.Generator;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

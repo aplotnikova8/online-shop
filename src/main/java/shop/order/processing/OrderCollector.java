@@ -3,15 +3,15 @@ package shop.order.processing;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import shop.order.generators.OrderGenerator;
+import shop.order.models.Order;
 import shop.utils.Constants;
 import shop.utils.PropertyFileReader;
-import shop.order.models.Order;
-import shop.order.generators.OrderGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static shop.utils.Constants.MIN_ORDERS_LIST_SIZE;
+import static shop.utils.Constants.DEFAULT_ORDERS_LIST_SIZE;
 
 @Log
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -22,7 +22,7 @@ public class OrderCollector {
         try {
             number = Integer.parseInt(PropertyFileReader.getProperties(Constants.NUMBER_OF_ORDERS));
             if (number == 0) {
-                number = MIN_ORDERS_LIST_SIZE;
+                number = DEFAULT_ORDERS_LIST_SIZE;
             }
         } catch (NumberFormatException e) {
             log.info("Can not parse constant " + Constants.NUMBER_OF_ORDERS + " to integer");
