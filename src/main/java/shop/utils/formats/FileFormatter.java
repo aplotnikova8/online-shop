@@ -1,4 +1,4 @@
-package shop.utils;
+package shop.utils.formats;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 @Getter
 @AllArgsConstructor
-public enum FileFormat {
+public enum FileFormatter {
 
     TXT("txt"),
     JSON("json");
@@ -23,8 +23,8 @@ public enum FileFormat {
     }
 
     public static List<String> getTypeList() {
-        return Arrays.asList(FileFormat.values()).stream()
-                .map(FileFormat::getType)
+        return Arrays.asList(FileFormatter.values()).stream()
+                .map(FileFormatter::getType)
                 .collect(Collectors.toList());
     }
 }

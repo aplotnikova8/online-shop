@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static shop.utils.Constants.*;
+import static shop.utils.constants.GlobalConstants.*;
 import static shop.utils.Generator.*;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)

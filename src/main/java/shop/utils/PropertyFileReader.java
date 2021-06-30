@@ -3,6 +3,7 @@ package shop.utils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.java.Log;
+import shop.utils.constants.GlobalConstants;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -17,11 +18,11 @@ public class PropertyFileReader {
     private static boolean fileWasReading = false;
 
     private static void fillProperties() {
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(Constants.PATH_TO_PROP))) {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(GlobalConstants.PATH_TO_PROP))) {
             properties.load(br);
             fileWasReading = true;
         } catch (IOException e) {
-            log.info("Can not read file with path " + Constants.PATH_TO_PROP);
+            log.info("Can not read file with path " + GlobalConstants.PATH_TO_PROP);
         }
     }
 

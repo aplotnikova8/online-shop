@@ -1,4 +1,4 @@
-package shop.utils.formatter;
+package shop.utils.formats;
 
 import lombok.experimental.UtilityClass;
 import shop.utils.Generator;

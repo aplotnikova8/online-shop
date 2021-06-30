@@ -1,11 +1,9 @@
-package shop.utils.formatter;
+package shop.utils.formats;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.experimental.UtilityClass;
 import shop.order.models.Order;
-
-import java.util.List;
 
 @UtilityClass
 public class JsonFormatter {
