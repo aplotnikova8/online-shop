@@ -29,17 +29,6 @@ public class ConverterTxtToOrder implements ConverterToOrders {
         return Stream.empty();
     }
 
-/*    private static Map<String, List<String>> convertLinesToOrdersMap(int keysPostion) {
-        try {
-            return Files.lines(Paths.get(FILE_NAME))
-                    .collect(Collectors.groupingBy(s -> s.split("\\|")[keysPostion],
-                            TreeMap::new, Collectors.toList()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return Collections.EMPTY_MAP;
-    }*/
-
 }
 
 

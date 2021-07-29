@@ -1,4 +1,5 @@
 orders.txt
 target/
 .idea/
+**/.DS_Store
 onlineShop.iml

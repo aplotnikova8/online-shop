@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Builder
 @Getter
@@ -14,7 +15,7 @@ public class Order {
 
     protected String orderNumber;
     protected String customersName;
-    protected Boolean loyalty;
+    protected boolean loyalty;
     protected String date;
     protected String paymentType;
     protected List<Product> basket;
