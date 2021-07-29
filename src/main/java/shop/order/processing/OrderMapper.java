@@ -38,7 +38,7 @@ public class OrderMapper {
         for (String s : value) {
             String[] ordersPositions = s.split("\\|");
             order.setCustomersName(ordersPositions[CUSTOMERS_NAME_POSITION]);
-            order.setLoyalty(Boolean.getBoolean(ordersPositions[LOYALTY_POSITION]));
+            order.setLoyalty(Boolean.parseBoolean(ordersPositions[LOYALTY_POSITION]));
             order.setDate(ordersPositions[DATE_POSITION]);
             order.setPaymentType(ordersPositions[PAYMENT_TYPE_POSITION]);
             order.addInBasket(ordersPositions[PRODUCT_NUMBER_POSITION], ordersPositions[PRODUCT_PRICE_POSITION]);

@@ -5,8 +5,8 @@ import shop.order.models.Order;
 
 import static shop.order.generators.ProductsListGenerator.*;
 import static shop.utils.constants.GlobalConstants.*;
-import static shop.utils.formats.DateFormatter.*;
 import static shop.utils.Generator.*;
+import static shop.utils.formats.DateFormatter.getDate;
 
 @RequiredArgsConstructor(staticName = "create")
 public class OrderGenerator {
