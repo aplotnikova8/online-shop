@@ -1,4 +1,4 @@
-package shop.utils;
+package shop.utils.constants;
 
 import lombok.AllArgsConstructor;
 

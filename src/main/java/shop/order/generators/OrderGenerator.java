@@ -4,9 +4,9 @@ import lombok.RequiredArgsConstructor;
 import shop.order.models.Order;
 
 import static shop.order.generators.ProductsListGenerator.*;
-import static shop.utils.Constants.*;
-import static shop.utils.formatter.DateFormatter.*;
+import static shop.utils.constants.GlobalConstants.*;
 import static shop.utils.Generator.*;
+import static shop.utils.formats.DateFormatter.getDate;
 
 @RequiredArgsConstructor(staticName = "create")
 public class OrderGenerator {
@@ -16,7 +16,7 @@ public class OrderGenerator {
                 .customersName(generateString())
                 .loyalty(generateBoolean())
                 .date(getDate())
-                .bucket(generateProductList(numberOfProducts))
+                .basket(generateProductList(numberOfProducts))
                 .paymentType(generatePaymentType())
                 .build();
     }

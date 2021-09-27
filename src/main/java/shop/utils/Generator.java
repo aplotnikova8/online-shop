@@ -1,6 +1,7 @@
 package shop.utils;
 
 import lombok.experimental.UtilityClass;
+import shop.utils.constants.PaymentType;
 
 import java.text.DecimalFormat;
 import java.util.*;
@@ -31,28 +32,28 @@ public class Generator {
     }
 
     public static String generateWord() {
-        Character[] alp = IntStream.rangeClosed('a', 'z')
+        Character[] alphabet = IntStream.rangeClosed('a', 'z')
                 .mapToObj(var -> (char) var)
                 .toArray(Character[]::new);
 
-        StringBuilder sb = new StringBuilder();
+        StringJoiner joiner = new StringJoiner("");
 
         for (int i = 0; i < 20; i++) {
-            sb.append(alp[random.nextInt(alp.length - 1)]);
-            if (i >= 2 && alp[random.nextInt(alp.length - 1)] % 10 == 0) {
+            joiner.add(alphabet[random.nextInt(alphabet.length - 1)].toString());
+            if (i >= 2 && alphabet[random.nextInt(alphabet.length - 1)] % 10 == 0) {
                 break;
             }
         }
-        return sb.toString();
+        return joiner.toString();
     }
 
     public static String generateString() {
-        StringBuilder sb = new StringBuilder();
-        IntStream.rangeClosed(1, 2).mapToObj(i -> Generator.generateWord() + " ").forEach(sb::append);
+        StringJoiner joiner = new StringJoiner(" ");
+        IntStream.rangeClosed(1, 2).mapToObj(i -> Generator.generateWord()).forEach(joiner::add);
         if (Generator.generateBoolean()) {
-            sb.append(Generator.generateWord());
+            joiner.add(Generator.generateWord());
         }
-        return sb.toString().trim();
+        return joiner.toString();
     }
 
     private static List<String> addAllPaymentTypeInList() {

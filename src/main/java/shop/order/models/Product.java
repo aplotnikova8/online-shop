@@ -1,9 +1,13 @@
 package shop.order.models;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.io.Serializable;
 
 @AllArgsConstructor
-public class Product {
+@Getter
+public class Product implements Serializable {
 
     protected String productNumber;
     protected String price;

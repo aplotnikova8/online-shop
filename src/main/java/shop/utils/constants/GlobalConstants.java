@@ -1,13 +1,13 @@
-package shop.utils;
+package shop.utils.constants;
 
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
-public class Constants {
+public class GlobalConstants {
 
     public static final int ORDER_NUMBER_SIZE = 10;
     public static final int PRODUCT_NUMBER_SIZE = 8;
-    public static final int MAX_BUCKET_SIZE = 10;
+    public static final int MAX_BASKET_SIZE = 10;
 
     public static final int DEFAULT_ORDERS_LIST_SIZE = 10;
 
